@@ -1,0 +1,1209 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rapport de Projet - VirtualCity</title>
+    <style>
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2c3e50;
+            --accent-color: #e74c3c;
+            --bg-color: #f5f7fa;
+            --text-color: #333;
+            --code-bg: #1e1e2e;
+            --code-text: #cdd6f4;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.8;
+            color: var(--text-color);
+            background: var(--bg-color);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--secondary-color) 0%, #1a252f 100%);
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        header h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        header h1 span {
+            color: var(--primary-color);
+        }
+
+        header .subtitle {
+            font-size: 1.3rem;
+            opacity: 0.9;
+        }
+
+        header .info {
+            margin-top: 30px;
+            font-size: 1rem;
+            opacity: 0.8;
+        }
+
+        /* Navigation */
+        nav {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            margin-bottom: 40px;
+        }
+
+        nav h3 {
+            color: var(--secondary-color);
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+
+        nav ul {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 10px;
+        }
+
+        nav a {
+            color: var(--primary-color);
+            text-decoration: none;
+            display: block;
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        nav a:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        /* Sections */
+        section {
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            margin-bottom: 40px;
+        }
+
+        section h2 {
+            color: var(--secondary-color);
+            font-size: 2rem;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        section h2 .icon {
+            font-size: 2.5rem;
+        }
+
+        section h3 {
+            color: var(--secondary-color);
+            font-size: 1.4rem;
+            margin: 25px 0 15px 0;
+        }
+
+        section h4 {
+            color: var(--primary-color);
+            font-size: 1.1rem;
+            margin: 20px 0 10px 0;
+        }
+
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        ul,
+        ol {
+            margin-left: 30px;
+            margin-bottom: 15px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        /* Screenshot */
+        .screenshot {
+            text-align: center;
+            margin: 30px 0;
+        }
+
+        .screenshot img {
+            max-width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+            border: 2px solid #ddd;
+        }
+
+        .screenshot figcaption {
+            margin-top: 15px;
+            color: #666;
+            font-style: italic;
+        }
+
+        /* Code blocks */
+        .code-section {
+            margin: 25px 0;
+        }
+
+        .code-header {
+            background: var(--secondary-color);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 8px 8px 0 0;
+            font-family: 'Consolas', monospace;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .code-header .filename {
+            font-weight: bold;
+        }
+
+        .code-header .lang {
+            background: var(--primary-color);
+            padding: 3px 10px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+        }
+
+        pre {
+            background: var(--code-bg);
+            color: var(--code-text);
+            padding: 20px;
+            border-radius: 0 0 8px 8px;
+            overflow-x: auto;
+            font-family: 'Consolas', 'Courier New', monospace;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        code {
+            font-family: 'Consolas', 'Courier New', monospace;
+        }
+
+        .inline-code {
+            background: #e8e8e8;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.9rem;
+        }
+
+        /* Syntax highlighting */
+        .keyword {
+            color: #cba6f7;
+        }
+
+        .type {
+            color: #89dceb;
+        }
+
+        .string {
+            color: #a6e3a1;
+        }
+
+        .comment {
+            color: #6c7086;
+            font-style: italic;
+        }
+
+        .function {
+            color: #89b4fa;
+        }
+
+        .number {
+            color: #fab387;
+        }
+
+        /* UML Diagram */
+        .uml-diagram {
+            background: white;
+            border: 2px solid var(--primary-color);
+            border-radius: 10px;
+            padding: 30px;
+            margin: 20px 0;
+            overflow-x: auto;
+        }
+
+        .class-box {
+            border: 2px solid var(--secondary-color);
+            border-radius: 8px;
+            margin: 15px 0;
+            background: #f8f9fa;
+            display: inline-block;
+            min-width: 300px;
+            vertical-align: top;
+            margin-right: 20px;
+        }
+
+        .class-name {
+            background: var(--secondary-color);
+            color: white;
+            padding: 10px;
+            text-align: center;
+            font-weight: bold;
+            border-radius: 6px 6px 0 0;
+        }
+
+        .class-abstract {
+            background: var(--primary-color);
+        }
+
+        .class-attributes,
+        .class-methods {
+            padding: 10px;
+            font-family: 'Consolas', monospace;
+            font-size: 0.85rem;
+            border-top: 1px solid #ddd;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 0.95rem;
+        }
+
+        th,
+        td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background: var(--secondary-color);
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+
+        tr:hover {
+            background: #e8f4fc;
+        }
+
+        /* Feature boxes */
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .feature-box {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e8f4fc 100%);
+            padding: 25px;
+            border-radius: 10px;
+            border-left: 4px solid var(--primary-color);
+        }
+
+        .feature-box h4 {
+            margin-top: 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* Highlights */
+        .highlight {
+            background: linear-gradient(to right, #fef9c3, #fef9c3);
+            padding: 2px 5px;
+            border-radius: 3px;
+        }
+
+        .important {
+            background: #fee2e2;
+            border-left: 4px solid var(--accent-color);
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            background: var(--secondary-color);
+            color: white;
+            margin-top: 40px;
+        }
+
+        footer p {
+            text-align: center;
+        }
+
+        /* Print styles */
+        @media print {
+            header {
+                background: var(--secondary-color) !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+
+            section {
+                box-shadow: none;
+                border: 1px solid #ddd;
+            }
+
+            .screenshot img {
+                box-shadow: none;
+                border: 1px solid #ccc;
+            }
+        }
+
+        /* Architecture diagram */
+        .architecture {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin: 30px 0;
+        }
+
+        .arch-layer {
+            text-align: center;
+            padding: 20px;
+            border-radius: 10px;
+            min-width: 200px;
+        }
+
+        .arch-ui {
+            background: linear-gradient(135deg, #a8e6cf, #88d8b0);
+        }
+
+        .arch-logic {
+            background: linear-gradient(135deg, #ffd3a5, #ffa07a);
+        }
+
+        .arch-model {
+            background: linear-gradient(135deg, #b8c1ec, #9fa8da);
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>🏙️ <span>VirtualCity</span></h1>
+        <p class="subtitle">Simulateur de Gestion de Ville Virtuelle</p>
+        <p class="info">
+            <strong>Projet C++ avec Qt Framework</strong><br>
+            Rapport de Projet - Décembre 2025
+        </p>
+        <p class="info"
+            style="margin-top: 25px; padding: 15px; background: rgba(255,255,255,0.1); border-radius: 10px;">
+            <strong>👤 Réalisé par :</strong><br>
+            <span style="font-size: 1.4rem; font-weight: bold;">Mehdi BRAIEK</span><br>
+            <span style="opacity: 0.9;">Section : GLSI2 - Groupe 3</span>
+        </p>
+    </header>
+
+    <div class="container">
+
+        <!-- Table des matières -->
+        <nav>
+            <h3>📋 Table des Matières</h3>
+            <ul>
+                <li><a href="#introduction">1. Introduction</a></li>
+                <li><a href="#objectifs">2. Objectifs du Projet</a></li>
+                <li><a href="#technologies">3. Technologies Utilisées</a></li>
+                <li><a href="#architecture">4. Architecture du Projet</a></li>
+                <li><a href="#diagramme">5. Diagramme de Classes UML</a></li>
+                <li><a href="#capture">6. Capture de l'Application</a></li>
+                <li><a href="#code">7. Implémentation du Code</a></li>
+                <li><a href="#fonctionnalites">8. Fonctionnalités</a></li>
+                <li><a href="#conclusion">9. Conclusion</a></li>
+            </ul>
+        </nav>
+
+        <!-- 1. Introduction -->
+        <section id="introduction">
+            <h2><span class="icon">📖</span> 1. Introduction</h2>
+            <p>
+                <strong>VirtualCity</strong> est un projet de simulation de gestion de ville développé en C++ avec le
+                framework Qt.
+                Ce simulateur permet aux utilisateurs de construire et gérer une ville virtuelle en ajoutant différents
+                types de
+                bâtiments, en gérant les ressources (eau, électricité, budget) et en observant l'évolution de la
+                satisfaction
+                des habitants au fil des cycles de simulation.
+            </p>
+            <p>
+                Le projet met en œuvre les concepts fondamentaux de la <strong>Programmation Orientée Objet
+                    (POO)</strong>
+                tels que l'héritage, le polymorphisme et l'encapsulation. L'interface graphique moderne et intuitive
+                a été développée avec Qt, offrant une expérience utilisateur fluide et agréable.
+            </p>
+        </section>
+
+        <!-- 2. Objectifs -->
+        <section id="objectifs">
+            <h2><span class="icon">🎯</span> 2. Objectifs du Projet</h2>
+            <div class="feature-grid">
+                <div class="feature-box">
+                    <h4>🏗️ Construction</h4>
+                    <p>Permettre la construction de différents types de bâtiments : Maisons, Usines et Parcs.</p>
+                </div>
+                <div class="feature-box">
+                    <h4>💰 Gestion des Ressources</h4>
+                    <p>Gérer le budget, l'eau, l'électricité et la pollution de la ville.</p>
+                </div>
+                <div class="feature-box">
+                    <h4>👥 Population</h4>
+                    <p>Suivre l'évolution de la population et sa satisfaction.</p>
+                </div>
+                <div class="feature-box">
+                    <h4>🔄 Simulation</h4>
+                    <p>Implémenter un système de cycles avec événements aléatoires.</p>
+                </div>
+                <div class="feature-box">
+                    <h4>💾 Persistance</h4>
+                    <p>Sauvegarder et charger l'état de la ville.</p>
+                </div>
+                <div class="feature-box">
+                    <h4>🖥️ Interface Graphique</h4>
+                    <p>Créer une interface utilisateur moderne et intuitive avec Qt.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. Technologies -->
+        <section id="technologies">
+            <h2><span class="icon">🛠️</span> 3. Technologies Utilisées</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Technologie</th>
+                        <th>Version</th>
+                        <th>Utilisation</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>C++</strong></td>
+                        <td>C++17</td>
+                        <td>Langage de programmation principal</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Qt Framework</strong></td>
+                        <td>Qt 6.x</td>
+                        <td>Interface graphique (GUI)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>CMake</strong></td>
+                        <td>3.16+</td>
+                        <td>Système de build</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Qt Creator</strong></td>
+                        <td>-</td>
+                        <td>IDE de développement</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- 4. Architecture -->
+        <section id="architecture">
+            <h2><span class="icon">📐</span> 4. Architecture du Projet</h2>
+            <p>Le projet suit une architecture en couches bien structurée :</p>
+
+            <div class="architecture">
+                <div class="arch-layer arch-ui">
+                    <h4>🖥️ Interface Utilisateur</h4>
+                    <p>mainwindow.cpp/h</p>
+                    <p>mainwindow.ui</p>
+                </div>
+                <div class="arch-layer arch-logic">
+                    <h4>⚙️ Logique Métier</h4>
+                    <p>simulation.cpp/h</p>
+                    <p>ville.cpp/h</p>
+                </div>
+                <div class="arch-layer arch-model">
+                    <h4>📦 Modèles de Données</h4>
+                    <p>batiment.cpp/h</p>
+                    <p>maison.cpp/h</p>
+                    <p>usine.cpp/h</p>
+                    <p>parc.cpp/h</p>
+                </div>
+            </div>
+
+            <h3>Structure des Fichiers</h3>
+            <div class="code-section">
+                <div class="code-header">
+                    <span class="filename">📁 Structure du Projet</span>
+                </div>
+                <pre>
+VirtualCity/
+├── 📄 CMakeLists.txt          <span class="comment"># Configuration CMake</span>
+├── 📄 main.cpp                <span class="comment"># Point d'entrée</span>
+├── 📄 mainwindow.cpp/h/ui     <span class="comment"># Interface graphique</span>
+├── 📄 ville.cpp/h             <span class="comment"># Classe Ville</span>
+├── 📄 simulation.cpp/h        <span class="comment"># Moteur de simulation</span>
+├── 📄 batiment.cpp/h          <span class="comment"># Classe de base Batiment</span>
+├── 📄 maison.cpp/h            <span class="comment"># Classe Maison (héritage)</span>
+├── 📄 usine.cpp/h             <span class="comment"># Classe Usine (héritage)</span>
+├── 📄 parc.cpp/h              <span class="comment"># Classe Parc (héritage)</span>
+└── 📁 build/                  <span class="comment"># Fichiers compilés</span>
+            </pre>
+            </div>
+        </section>
+
+        <!-- 5. Diagramme de Classes -->
+        <section id="diagramme">
+            <h2><span class="icon">📊</span> 5. Diagramme de Classes UML</h2>
+            <p>Voici le diagramme de classes représentant l'architecture orientée objet du projet :</p>
+
+            <div class="uml-diagram">
+                <!-- Batiment (classe de base) -->
+                <div class="class-box">
+                    <div class="class-name class-abstract">《abstract》 Batiment</div>
+                    <div class="class-attributes">
+                        <strong>Attributs (protected)</strong><br>
+                        - id: int<br>
+                        - nom: string<br>
+                        - type: string<br>
+                        - consommationEau: double<br>
+                        - consommationElectricite: double<br>
+                        - effetSatisfaction: int<br>
+                        - coutConstruction: double
+                    </div>
+                    <div class="class-methods">
+                        <strong>Méthodes</strong><br>
+                        + Batiment()<br>
+                        + virtual ~Batiment()<br>
+                        + virtual afficherDetails(): void<br>
+                        + calculerImpactRessources(): void<br>
+                        + getters/setters
+                    </div>
+                </div>
+
+                <!-- Maison -->
+                <div class="class-box">
+                    <div class="class-name">Maison</div>
+                    <div class="class-attributes">
+                        <strong>Attributs</strong><br>
+                        - capaciteHabitants: int<br>
+                        - habitantsActuels: int
+                    </div>
+                    <div class="class-methods">
+                        <strong>Méthodes</strong><br>
+                        + Maison(id, nom, capacite)<br>
+                        + ajouterHabitants(nb): bool<br>
+                        + retirerHabitants(nb): bool<br>
+                        + afficherDetails(): void
+                    </div>
+                </div>
+
+                <!-- Usine -->
+                <div class="class-box">
+                    <div class="class-name">Usine</div>
+                    <div class="class-attributes">
+                        <strong>Attributs</strong><br>
+                        - productionRessources: double<br>
+                        - pollution: double
+                    </div>
+                    <div class="class-methods">
+                        <strong>Méthodes</strong><br>
+                        + Usine(id, nom)<br>
+                        + produireRessources(): double<br>
+                        + calculerPollution(): double<br>
+                        + afficherDetails(): void
+                    </div>
+                </div>
+
+                <!-- Parc -->
+                <div class="class-box">
+                    <div class="class-name">Parc</div>
+                    <div class="class-attributes">
+                        <strong>Attributs</strong><br>
+                        - surface: double<br>
+                        - effetBienEtre: int
+                    </div>
+                    <div class="class-methods">
+                        <strong>Méthodes</strong><br>
+                        + Parc(id, nom, surface)<br>
+                        + ameliorerBienEtre(): int<br>
+                        + afficherDetails(): void
+                    </div>
+                </div>
+
+                <!-- Ville -->
+                <div class="class-box">
+                    <div class="class-name">Ville</div>
+                    <div class="class-attributes">
+                        <strong>Attributs</strong><br>
+                        - nom: string<br>
+                        - budget: double<br>
+                        - population: int<br>
+                        - satisfaction: int<br>
+                        - batiments: vector&lt;Batiment*&gt;<br>
+                        - eau, electricite, pollution: double
+                    </div>
+                    <div class="class-methods">
+                        <strong>Méthodes</strong><br>
+                        + ajouterBatiment(): void<br>
+                        + supprimerBatiment(id): bool<br>
+                        + trouverBatiment(id): Batiment*<br>
+                        + calculerSatisfaction(): int<br>
+                        + mettreAJourRessources(): void
+                    </div>
+                </div>
+
+                <!-- Simulation -->
+                <div class="class-box">
+                    <div class="class-name">Simulation</div>
+                    <div class="class-attributes">
+                        <strong>Attributs</strong><br>
+                        - cycleActuel: int<br>
+                        - ville: Ville*<br>
+                        - evenements: vector&lt;Evenement&gt;<br>
+                        - dernierEvenement: Evenement
+                    </div>
+                    <div class="class-methods">
+                        <strong>Méthodes</strong><br>
+                        + demarrerCycle(): void<br>
+                        + terminerCycle(): void<br>
+                        + declencherEvenement(): Evenement<br>
+                        + initialiserEvenements(): void
+                    </div>
+                </div>
+            </div>
+
+            <h3>Relations entre les classes</h3>
+            <ul>
+                <li><strong>Héritage :</strong> Maison, Usine et Parc héritent de la classe Batiment</li>
+                <li><strong>Composition :</strong> Ville contient plusieurs Batiment* (vecteur)</li>
+                <li><strong>Association :</strong> Simulation possède une référence vers Ville</li>
+                <li><strong>Agrégation :</strong> MainWindow utilise Ville et Simulation</li>
+            </ul>
+        </section>
+
+        <!-- 6. Capture de l'Application -->
+        <section id="capture">
+            <h2><span class="icon">📸</span> 6. Capture de l'Application</h2>
+            <p>Voici une capture d'écran de l'interface principale de VirtualCity :</p>
+
+            <figure class="screenshot">
+                <img src="file:///C:/Users/mehdi/.gemini/antigravity/brain/9b52f473-d55b-4b17-9f85-a0d17f13fee2/uploaded_image_1766407701700.png"
+                    alt="Interface VirtualCity">
+                <figcaption><strong>Figure 1 :</strong> Interface principale de VirtualCity - Vue du tableau de bord
+                </figcaption>
+            </figure>
+
+            <h3>Description de l'Interface</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Zone</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Bâtiments de la ville</strong></td>
+                        <td>Liste interactive des bâtiments construits avec affichage des détails</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Événements</strong></td>
+                        <td>Historique des événements survenus avec leurs impacts détaillés</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Journal</strong></td>
+                        <td>Log des actions et événements du jeu</td>
+                    </tr>
+                    <tr>
+                        <td><strong>État de la ville</strong></td>
+                        <td>Indicateurs en temps réel : Budget, Population, Satisfaction, Ressources</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Boutons d'action</strong></td>
+                        <td>Ajouter Maison/Usine/Parc, Supprimer, Modifier, Sauvegarder</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- 7. Implémentation du Code -->
+        <section id="code">
+            <h2><span class="icon">💻</span> 7. Implémentation du Code</h2>
+
+            <!-- Classe Batiment -->
+            <h3>7.1 Classe de Base : Batiment</h3>
+            <p>La classe <code class="inline-code">Batiment</code> est la classe de base abstraite pour tous les types
+                de bâtiments :</p>
+
+            <div class="code-section">
+                <div class="code-header">
+                    <span class="filename">batiment.h</span>
+                    <span class="lang">C++ Header</span>
+                </div>
+                <pre><span class="keyword">#ifndef</span> BATIMENT_H
+<span class="keyword">#define</span> BATIMENT_H
+
+<span class="keyword">#include</span> <span class="string">&lt;string&gt;</span>
+<span class="keyword">#include</span> <span class="string">&lt;iostream&gt;</span>
+<span class="keyword">using namespace</span> std;
+
+<span class="keyword">class</span> <span class="type">Batiment</span>
+{
+<span class="keyword">protected</span>:
+    <span class="type">int</span> id;
+    <span class="type">string</span> nom;
+    <span class="type">string</span> type;
+    <span class="type">double</span> consommationEau;
+    <span class="type">double</span> consommationElectricite;
+    <span class="type">int</span> effetSatisfaction;
+    <span class="type">double</span> coutConstruction;
+
+<span class="keyword">public</span>:
+    <span class="function">Batiment</span>();
+    <span class="function">Batiment</span>(<span class="type">int</span> id, <span class="type">string</span> nom, <span class="type">string</span> type, 
+            <span class="type">double</span> eau, <span class="type">double</span> elec, <span class="type">int</span> satisfaction, <span class="type">double</span> cout);
+    <span class="keyword">virtual</span> ~<span class="function">Batiment</span>() {}
+
+    <span class="keyword">virtual</span> <span class="type">void</span> <span class="function">afficherDetails</span>();
+    <span class="keyword">virtual</span> <span class="type">void</span> <span class="function">calculerImpactRessources</span>(<span class="type">double</span>& eau, <span class="type">double</span>& electricite);
+
+    <span class="comment">// Getters</span>
+    <span class="type">int</span> <span class="function">getId</span>() { <span class="keyword">return</span> id; }
+    <span class="type">string</span> <span class="function">getNom</span>() { <span class="keyword">return</span> nom; }
+    <span class="type">string</span> <span class="function">getType</span>() { <span class="keyword">return</span> type; }
+    <span class="type">double</span> <span class="function">getConsommationEau</span>() { <span class="keyword">return</span> consommationEau; }
+    <span class="type">double</span> <span class="function">getConsommationElectricite</span>() { <span class="keyword">return</span> consommationElectricite; }
+    <span class="type">int</span> <span class="function">getEffetSatisfaction</span>() { <span class="keyword">return</span> effetSatisfaction; }
+    <span class="type">double</span> <span class="function">getCoutConstruction</span>() { <span class="keyword">return</span> coutConstruction; }
+    <span class="type">void</span> <span class="function">setNom</span>(<span class="keyword">const</span> <span class="type">string</span>& n) { nom = n; }
+};
+
+<span class="keyword">#endif</span></pre>
+            </div>
+
+            <!-- Classe Maison -->
+            <h3>7.2 Classe Dérivée : Maison</h3>
+            <p>La classe <code class="inline-code">Maison</code> hérite de <code class="inline-code">Batiment</code> et
+                gère les habitants :</p>
+
+            <div class="code-section">
+                <div class="code-header">
+                    <span class="filename">maison.cpp</span>
+                    <span class="lang">C++</span>
+                </div>
+                <pre><span class="keyword">#include</span> <span class="string">"maison.h"</span>
+<span class="keyword">#include</span> <span class="string">&lt;iostream&gt;</span>
+
+<span class="type">Maison</span>::<span class="function">Maison</span>() : <span class="function">Batiment</span>() {
+    capaciteHabitants = <span class="number">0</span>;
+    habitantsActuels = <span class="number">0</span>;
+}
+
+<span class="type">Maison</span>::<span class="function">Maison</span>(<span class="type">int</span> id, <span class="type">string</span> nom, <span class="type">int</span> capacite)
+    : <span class="function">Batiment</span>(id, nom, <span class="string">"Habitation"</span>, <span class="number">10.0</span>, <span class="number">15.0</span>, <span class="number">5</span>, <span class="number">50000.0</span>) {
+    capaciteHabitants = capacite;
+    habitantsActuels = <span class="number">0</span>;
+}
+
+<span class="type">bool</span> <span class="type">Maison</span>::<span class="function">ajouterHabitants</span>(<span class="type">int</span> nb) {
+    <span class="keyword">if</span> (habitantsActuels + nb <= capaciteHabitants) {
+        habitantsActuels += nb;
+        <span class="keyword">return true</span>;
+    }
+    <span class="keyword">return false</span>;
+}
+
+<span class="type">bool</span> <span class="type">Maison</span>::<span class="function">retirerHabitants</span>(<span class="type">int</span> nb) {
+    <span class="keyword">if</span> (habitantsActuels >= nb) {
+        habitantsActuels -= nb;
+        <span class="keyword">return true</span>;
+    }
+    <span class="keyword">return false</span>;
+}
+
+<span class="type">void</span> <span class="type">Maison</span>::<span class="function">afficherDetails</span>() {
+    <span class="type">Batiment</span>::<span class="function">afficherDetails</span>();
+    cout << <span class="string">"Capacite Habitants: "</span> << capaciteHabitants << endl;
+    cout << <span class="string">"Habitants Actuels: "</span> << habitantsActuels << endl;
+}</pre>
+            </div>
+
+            <!-- Classe Usine -->
+            <h3>7.3 Classe Dérivée : Usine</h3>
+            <p>La classe <code class="inline-code">Usine</code> produit des ressources mais génère de la pollution :</p>
+
+            <div class="code-section">
+                <div class="code-header">
+                    <span class="filename">usine.cpp</span>
+                    <span class="lang">C++</span>
+                </div>
+                <pre><span class="keyword">#include</span> <span class="string">"usine.h"</span>
+<span class="keyword">#include</span> <span class="string">&lt;iostream&gt;</span>
+
+<span class="type">Usine</span>::<span class="function">Usine</span>() : <span class="function">Batiment</span>() {
+    productionRessources = <span class="number">0.0</span>;
+    pollution = <span class="number">0.0</span>;
+}
+
+<span class="type">Usine</span>::<span class="function">Usine</span>(<span class="type">int</span> id, <span class="type">string</span> nom)
+    : <span class="function">Batiment</span>(id, nom, <span class="string">"Ressource"</span>, <span class="number">20.0</span>, <span class="number">50.0</span>, <span class="number">-5</span>, <span class="number">100000.0</span>) {
+    productionRessources = <span class="number">100.0</span>;
+    pollution = <span class="number">15.0</span>;
+}
+
+<span class="type">double</span> <span class="type">Usine</span>::<span class="function">produireRessources</span>() {
+    <span class="keyword">return</span> productionRessources;
+}
+
+<span class="type">double</span> <span class="type">Usine</span>::<span class="function">calculerPollution</span>() {
+    <span class="keyword">return</span> pollution;
+}</pre>
+            </div>
+
+            <!-- Classe Parc -->
+            <h3>7.4 Classe Dérivée : Parc</h3>
+            <p>La classe <code class="inline-code">Parc</code> améliore le bien-être des habitants :</p>
+
+            <div class="code-section">
+                <div class="code-header">
+                    <span class="filename">parc.cpp</span>
+                    <span class="lang">C++</span>
+                </div>
+                <pre><span class="keyword">#include</span> <span class="string">"parc.h"</span>
+<span class="keyword">#include</span> <span class="string">&lt;iostream&gt;</span>
+
+<span class="type">Parc</span>::<span class="function">Parc</span>(<span class="type">int</span> id, <span class="type">string</span> nom, <span class="type">double</span> surf)
+    : <span class="function">Batiment</span>(id, nom, <span class="string">"Service"</span>, <span class="number">5.0</span>, <span class="number">2.0</span>, <span class="number">10</span>, <span class="number">30000.0</span>) {
+    surface = surf;
+    effetBienEtre = <span class="number">10</span>;
+}
+
+<span class="type">int</span> <span class="type">Parc</span>::<span class="function">ameliorerBienEtre</span>() {
+    <span class="type">int</span> amelioration = (<span class="type">int</span>)(surface / <span class="number">100.0</span>) + effetBienEtre;
+    <span class="keyword">return</span> amelioration;
+}</pre>
+            </div>
+
+            <!-- Classe Ville -->
+            <h3>7.5 Classe Ville</h3>
+            <p>La classe <code class="inline-code">Ville</code> gère l'ensemble des bâtiments et des ressources :</p>
+
+            <div class="code-section">
+                <div class="code-header">
+                    <span class="filename">ville.cpp (extrait)</span>
+                    <span class="lang">C++</span>
+                </div>
+                <pre><span class="type">void</span> <span class="type">Ville</span>::<span class="function">ajouterBatiment</span>(<span class="type">Batiment</span>* batiment) {
+    <span class="keyword">if</span> (budget >= batiment-><span class="function">getCoutConstruction</span>()) {
+        batiments.<span class="function">push_back</span>(batiment);
+        budget -= batiment-><span class="function">getCoutConstruction</span>();
+
+        <span class="type">Maison</span>* maison = <span class="keyword">dynamic_cast</span><<span class="type">Maison</span>*>(batiment);
+        <span class="keyword">if</span> (maison != <span class="keyword">nullptr</span>) {
+            <span class="type">int</span> capacite = maison-><span class="function">getCapaciteHabitants</span>();
+            maison-><span class="function">ajouterHabitants</span>(capacite);
+        }
+
+        <span class="function">calculerPopulationTotale</span>();
+        <span class="function">calculerPollutionTotale</span>();
+        <span class="function">calculerSatisfaction</span>();
+    }
+}
+
+<span class="type">int</span> <span class="type">Ville</span>::<span class="function">calculerSatisfaction</span>() {
+    <span class="type">int</span> satisfactionTotale = <span class="number">50</span>;
+
+    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i < batiments.<span class="function">size</span>(); i++) {
+        satisfactionTotale += batiments[i]-><span class="function">getEffetSatisfaction</span>();
+    }
+
+    <span class="keyword">if</span> (pollution > <span class="number">50.0</span>) {
+        satisfactionTotale -= (<span class="type">int</span>)(pollution / <span class="number">10.0</span>);
+    }
+
+    <span class="keyword">if</span> (eau < <span class="number">0</span> || electricite < <span class="number">0</span>) {
+        satisfactionTotale -= <span class="number">20</span>;
+    }
+
+    <span class="keyword">if</span> (satisfactionTotale < <span class="number">0</span>) satisfactionTotale = <span class="number">0</span>;
+    <span class="keyword">if</span> (satisfactionTotale > <span class="number">100</span>) satisfactionTotale = <span class="number">100</span>;
+
+    satisfaction = satisfactionTotale;
+    <span class="keyword">return</span> satisfaction;
+}</pre>
+            </div>
+
+            <!-- Classe Simulation -->
+            <h3>7.6 Classe Simulation avec Événements</h3>
+            <p>La classe <code class="inline-code">Simulation</code> gère les cycles et les événements aléatoires :</p>
+
+            <div class="code-section">
+                <div class="code-header">
+                    <span class="filename">simulation.cpp (extrait)</span>
+                    <span class="lang">C++</span>
+                </div>
+                <pre><span class="type">void</span> <span class="type">Simulation</span>::<span class="function">initialiserEvenements</span>() {
+    <span class="type">Evenement</span> e1 = {<span class="string">"Nuee de Pigeons"</span>, 
+        <span class="string">"Une nuee de pigeons geants envahit la ville!"</span>, 
+        <span class="number">-15</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">5</span>};
+    evenements.<span class="function">push_back</span>(e1);
+
+    <span class="type">Evenement</span> e2 = {<span class="string">"Panne de Courant"</span>, 
+        <span class="string">"Une panne de courant fait grimper la consommation!"</span>, 
+        <span class="number">-10</span>, <span class="number">0</span>, <span class="number">50</span>, <span class="number">0</span>};
+    evenements.<span class="function">push_back</span>(e2);
+
+    <span class="type">Evenement</span> e3 = {<span class="string">"Festival de la Ville"</span>, 
+        <span class="string">"Un festival ameliore le moral!"</span>, 
+        <span class="number">25</span>, <span class="number">-10</span>, <span class="number">-20</span>, <span class="number">-5</span>};
+    evenements.<span class="function">push_back</span>(e3);
+
+    <span class="type">Evenement</span> e4 = {<span class="string">"Subvention Gouvernementale"</span>, 
+        <span class="string">"La ville recoit une aide financiere!"</span>, 
+        <span class="number">10</span>, <span class="number">50</span>, <span class="number">50</span>, <span class="number">0</span>};
+    evenements.<span class="function">push_back</span>(e4);
+}
+
+<span class="type">Evenement</span> <span class="type">Simulation</span>::<span class="function">declencherEvenement</span>() {
+    <span class="keyword">if</span> (evenements.<span class="function">size</span>() == <span class="number">0</span> || ville == <span class="keyword">nullptr</span>) {
+        <span class="keyword">return</span> {<span class="string">""</span>, <span class="string">""</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>};
+    }
+
+    <span class="type">int</span> index = <span class="function">rand</span>() % evenements.<span class="function">size</span>();
+    <span class="type">Evenement</span> evt = evenements[index];
+
+    <span class="comment">// Appliquer les impacts sur la ville</span>
+    <span class="type">int</span> nouvelleSat = ville-><span class="function">getSatisfaction</span>() + evt.impactSatisfaction;
+    ville-><span class="function">setSatisfaction</span>(nouvelleSat);
+
+    <span class="type">double</span> nouvelleEau = ville-><span class="function">getEau</span>() + evt.impactEau;
+    ville-><span class="function">setEau</span>(nouvelleEau);
+
+    <span class="type">double</span> nouvelleElec = ville-><span class="function">getElectricite</span>() + evt.impactElectricite;
+    ville-><span class="function">setElectricite</span>(nouvelleElec);
+
+    dernierEvenement = evt;
+    <span class="keyword">return</span> evt;
+}</pre>
+            </div>
+
+            <!-- MainWindow -->
+            <h3>7.7 Interface Graphique : MainWindow</h3>
+            <p>Extrait de la classe <code class="inline-code">MainWindow</code> gérant l'interface Qt :</p>
+
+            <div class="code-section">
+                <div class="code-header">
+                    <span class="filename">mainwindow.cpp (extrait)</span>
+                    <span class="lang">C++</span>
+                </div>
+                <pre><span class="type">MainWindow</span>::<span class="function">MainWindow</span>(<span class="type">QWidget</span> *parent)
+    : <span class="function">QMainWindow</span>(parent)
+    , ui(<span class="keyword">new</span> <span class="type">Ui::MainWindow</span>)
+{
+    ui-><span class="function">setupUi</span>(<span class="keyword">this</span>);
+
+    ville = <span class="keyword">new</span> <span class="type">Ville</span>(<span class="string">"Ma Ville Virtuelle"</span>, <span class="number">500000.0</span>);
+    simulation = <span class="keyword">new</span> <span class="type">Simulation</span>(ville);
+    <span class="function">loadFromFile</span>(<span class="function">defaultSavePath</span>());
+
+    <span class="comment">// Connexion des signaux/slots</span>
+    <span class="function">connect</span>(ui->btnAjouterMaison, &<span class="type">QPushButton</span>::clicked, 
+            <span class="keyword">this</span>, &<span class="type">MainWindow</span>::ouvrirDialogMaison);
+    <span class="function">connect</span>(ui->btnAjouterUsine, &<span class="type">QPushButton</span>::clicked, 
+            <span class="keyword">this</span>, &<span class="type">MainWindow</span>::ouvrirDialogUsine);
+    <span class="function">connect</span>(ui->btnCycle, &<span class="type">QPushButton</span>::clicked, 
+            <span class="keyword">this</span>, &<span class="type">MainWindow</span>::demarrerCycle);
+    <span class="function">connect</span>(ui->btnSave, &<span class="type">QPushButton</span>::clicked, 
+            <span class="keyword">this</span>, &<span class="type">MainWindow</span>::saveToFile);
+
+    <span class="function">mettreAJourAffichage</span>();
+}
+
+<span class="type">void</span> <span class="type">MainWindow</span>::<span class="function">mettreAJourAffichage</span>() {
+    ui->labelCycle-><span class="function">setText</span>(<span class="string">"📅 Cycle: "</span> + 
+        <span class="type">QString</span>::<span class="function">number</span>(simulation-><span class="function">getCycleActuel</span>()));
+    ui->labelBudget-><span class="function">setText</span>(<span class="string">"💰 Budget: "</span> + 
+        <span class="type">QString</span>::<span class="function">number</span>(ville-><span class="function">getBudget</span>(), <span class="string">'f'</span>, <span class="number">0</span>) + <span class="string">" $"</span>);
+    ui->labelPopulation-><span class="function">setText</span>(<span class="string">"👥 Population: "</span> + 
+        <span class="type">QString</span>::<span class="function">number</span>(ville-><span class="function">getPopulation</span>()));
+    
+    <span class="type">int</span> sat = ville-><span class="function">getSatisfaction</span>();
+    <span class="type">QString</span> satEmoji = sat >= <span class="number">70</span> ? <span class="string">"😊"</span> : (sat >= <span class="number">40</span> ? <span class="string">"😐"</span> : <span class="string">"😫"</span>);
+    ui->labelSatisfaction-><span class="function">setText</span>(satEmoji + <span class="string">" Satisfaction: "</span> + 
+        <span class="type">QString</span>::<span class="function">number</span>(sat) + <span class="string">"%"</span>);
+    
+    <span class="comment">// Mise à jour de la liste des bâtiments...</span>
+}</pre>
+            </div>
+        </section>
+
+        <!-- 8. Fonctionnalités -->
+        <section id="fonctionnalites">
+            <h2><span class="icon">⚙️</span> 8. Fonctionnalités</h2>
+
+            <h3>8.1 Gestion des Bâtiments</h3>
+            <ul>
+                <li><strong>Maison :</strong> Héberge les habitants, consomme eau (10L) et électricité (15kWh), coût 50
+                    000$</li>
+                <li><strong>Usine :</strong> Produit des ressources, génère pollution (15), consomme plus d'énergie,
+                    coût 100 000$</li>
+                <li><strong>Parc :</strong> Améliore le bien-être (+10 satisfaction), faible consommation, coût 30 000$
+                </li>
+            </ul>
+
+            <h3>8.2 Système d'Événements</h3>
+            <p>Le jeu inclut plusieurs événements aléatoires qui peuvent survenir à chaque cycle :</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Événement</th>
+                        <th>Impact Satisfaction</th>
+                        <th>Impact Eau</th>
+                        <th>Impact Électricité</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>🐦 Nuée de Pigeons</td>
+                        <td style="color: red;">-15%</td>
+                        <td>0</td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td>⚡ Panne de Courant</td>
+                        <td style="color: red;">-10%</td>
+                        <td>0</td>
+                        <td style="color: red;">+50 kWh</td>
+                    </tr>
+                    <tr>
+                        <td>🎭 Festival de la Ville</td>
+                        <td style="color: green;">+25%</td>
+                        <td>-10 L</td>
+                        <td>-20 kWh</td>
+                    </tr>
+                    <tr>
+                        <td>💵 Subvention Gouvernementale</td>
+                        <td style="color: green;">+10%</td>
+                        <td style="color: green;">+50 L</td>
+                        <td style="color: green;">+50 kWh</td>
+                    </tr>
+                    <tr>
+                        <td>☀️ Journée Ensoleillée</td>
+                        <td style="color: green;">+15%</td>
+                        <td>0</td>
+                        <td>0</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>8.3 Indicateurs de Performance</h3>
+            <div class="feature-grid">
+                <div class="feature-box">
+                    <h4>💰 Budget</h4>
+                    <p>Gérez vos finances pour construire et maintenir les bâtiments.</p>
+                </div>
+                <div class="feature-box">
+                    <h4>👥 Population</h4>
+                    <p>La population augmente avec les maisons construites.</p>
+                </div>
+                <div class="feature-box">
+                    <h4>😊 Satisfaction</h4>
+                    <p>Indicateur dynamique avec code couleur (vert/jaune/rouge).</p>
+                </div>
+                <div class="feature-box">
+                    <h4>💧⚡ Ressources</h4>
+                    <p>Suivi de l'eau et de l'électricité en temps réel.</p>
+                </div>
+            </div>
+
+            <h3>8.4 Sauvegarde et Chargement</h3>
+            <p>Le jeu permet de sauvegarder et charger l'état complet de la ville :</p>
+            <ul>
+                <li>Sauvegarde automatique à la fermeture</li>
+                <li>Chargement au démarrage de l'application</li>
+                <li>Export vers fichier personnalisé</li>
+            </ul>
+        </section>
+
+        <!-- 9. Conclusion -->
+        <section id="conclusion">
+            <h2><span class="icon">✅</span> 9. Conclusion</h2>
+            <p>
+                Le projet <strong>VirtualCity</strong> est un exemple complet d'application de simulation
+                développée en C++ avec Qt. Il met en pratique les concepts fondamentaux de la programmation
+                orientée objet tout en offrant une interface utilisateur moderne et intuitive.
+            </p>
+
+            <h3>Points Forts</h3>
+            <ul>
+                <li>✅ Architecture orientée objet bien structurée avec héritage et polymorphisme</li>
+                <li>✅ Interface graphique moderne avec thème sombre élégant</li>
+                <li>✅ Système d'événements aléatoires pour plus de dynamisme</li>
+                <li>✅ Persistance des données avec sauvegarde/chargement</li>
+                <li>✅ Affichage détaillé des bâtiments et événements</li>
+                <li>✅ Code propre et maintenable</li>
+            </ul>
+
+            <h3>Améliorations Possibles</h3>
+            <ul>
+                <li>🔄 Ajout de nouveaux types de bâtiments (Hôpital, École, etc.)</li>
+                <li>📊 Graphiques statistiques d'évolution</li>
+                <li>🗺️ Carte visuelle 2D de la ville</li>
+                <li>🎵 Effets sonores et musique</li>
+                <li>💾 Sauvegarde dans une base de données</li>
+            </ul>
+
+            <div class="important">
+                <strong>Note :</strong> Ce projet démontre l'utilisation efficace de C++ et Qt pour créer
+                une application de simulation complète avec une architecture extensible et maintenable.
+            </div>
+        </section>
+
+    </div>
+
+    <footer>
+        <p><strong>Rapport de Projet - VirtualCity</strong></p>
+        <p>Développé avec C++ et Qt Framework</p>
+        <p
+            style="margin-top: 20px; padding: 15px; background: rgba(255,255,255,0.1); border-radius: 10px; display: inline-block;">
+            <strong>👤 Réalisé par : Mehdi BRAIEK</strong><br>
+            Section : GLSI2 - Groupe 3
+        </p>
+        <p>© 2026 - Tous droits réservés</p>
+    </footer>
+
+</body>
+
+</html>

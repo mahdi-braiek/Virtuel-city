@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>946</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>VirtualCity - GUI</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QWidget { background-color: #1a1b26; color: #a9b1d6; font-family: 'Segoe UI', 'San Francisco', sans-serif; }
+
+QMainWindow, QDialog { background-color: #1a1b26; }
+
+QPushButton { 
+  background: qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0 #2e3440, stop:1 #24283b); 
+  border: 1px solid #414868; border-radius: 8px; padding: 10px 18px; color: #c0caf5; 
+  font-weight: 600; font-size: 13px; 
+} 
+QPushButton:hover { background: #414868; border-color: #7aa2f7; color: #fff; } 
+QPushButton:pressed { background: #3d59a1; } 
+
+#btnCycle { 
+  background: qlineargradient(x1:0, y1:0, x2:1, y2:0, stop:0 #3d59a1, stop:1 #7aa2f7); 
+  color: white; font-size: 14px; font-weight: bold; border: none; min-height: 40px; padding: 0 25px; 
+} 
+#btnCycle:hover { background: #7aa2f7; } 
+
+QListWidget, QPlainTextEdit, QTextEdit, QLineEdit, QListView { 
+  background-color: #24283b; border: 1px solid #414868; border-radius: 12px; 
+  padding: 10px; color: #c0caf5; selection-background-color: #3d59a1; 
+} 
+QListWidget::item { padding: 10px; border-bottom: 1px solid #2f334d; margin: 2px 0; } 
+QListWidget::item:selected { background-color: #3d59a1; border-radius: 8px; color: white; } 
+
+QGroupBox { 
+  background-color: #1f2335; border: 1px solid #414868; border-radius: 15px; 
+  margin-top: 25px; padding-top: 20px; font-weight: bold; color: #7aa2f7; 
+} 
+QGroupBox::title { subcontrol-origin: margin; left: 15px; padding: 0 10px; background-color: #1a1b26; } 
+
+QLabel { background-color: transparent; color: #a9b1d6; font-size: 14px; } 
+#label_name { font-size: 20px; color: #7aa2f7; font-weight: 900; } 
+
+QScrollBar:vertical { border: none; background: #1a1b26; width: 8px; margin: 0; } 
+QScrollBar::handle:vertical { background: #414868; min-height: 20px; border-radius: 4px; } 
+QScrollBar::handle:vertical:hover { background: #7aa2f7; }</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QHBoxLayout" name="horizontalLayout">
+    <item>
+     <layout class="QVBoxLayout" name="leftVBox">
+      <item>
+       <widget class="QGroupBox" name="batimentGroup">
+        <property name="title">
+         <string>Bâtiments de la ville</string>
+        </property>
+        <layout class="QHBoxLayout" name="batimentSplit">
+         <item>
+          <widget class="QListWidget" name="listeBatiments"/>
+         </item>
+         <item>
+          <widget class="QPlainTextEdit" name="plainTextEdit_batimentDetails">
+           <property name="readOnly">
+            <bool>true</bool>
+           </property>
+           <property name="placeholderText">
+            <string>Cliquez sur un bâtiment pour voir ses détails...</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item>
+       <widget class="QGroupBox" name="eventsGroup">
+        <property name="title">
+         <string>Evénements</string>
+        </property>
+        <layout class="QVBoxLayout" name="eventsVBox">
+         <item>
+          <layout class="QHBoxLayout" name="eventsSplit">
+           <item>
+            <widget class="QListWidget" name="listWidget_events"/>
+           </item>
+           <item>
+            <widget class="QPlainTextEdit" name="plainTextEdit_eventDetails">
+             <property name="readOnly">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item>
+       <widget class="QGroupBox" name="logGroup">
+        <property name="title">
+         <string>Journal</string>
+        </property>
+        <layout class="QVBoxLayout" name="logVBox">
+         <item>
+          <widget class="QTextEdit" name="logText">
+           <property name="readOnly">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="buttonsHBox">
+        <item>
+         <widget class="QPushButton" name="btnAjouterMaison">
+          <property name="text">
+           <string>🏠 Ajouter Maison</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="btnAjouterUsine">
+          <property name="text">
+           <string>🏭 Ajouter Usine</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="btnAjouterParc">
+          <property name="text">
+           <string>🌳 Ajouter Parc</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="btnSupprimer">
+          <property name="text">
+           <string>🗑️ Supprimer</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="btnModify">
+          <property name="text">
+           <string>✏️ Modifier</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <layout class="QVBoxLayout" name="rightVBox">
+      <item>
+       <layout class="QHBoxLayout" name="cycleHBox">
+        <item>
+         <widget class="QPushButton" name="btnCycle">
+          <property name="text">
+           <string>🚀 Démarrer Cycle</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="btnRunNCycles">
+          <property name="text">
+           <string>⏩ Lancer N Cycles</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <widget class="QGroupBox" name="statusGroup">
+        <property name="title">
+         <string>Etat de la ville</string>
+        </property>
+        <layout class="QVBoxLayout" name="statusVBox">
+         <item>
+          <widget class="QLabel" name="label_name">
+           <property name="text">
+            <string>Ville: -</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="labelBudget">
+           <property name="text">
+            <string>Budget: -</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="labelPopulation">
+           <property name="text">
+            <string>Population: -</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="labelSatisfaction">
+           <property name="text">
+            <string>Satisfaction: -</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="labelEau">
+           <property name="text">
+            <string>Eau: -</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="labelElectricite">
+           <property name="text">
+            <string>Electricité: -</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="labelPollution">
+           <property name="text">
+            <string>Pollution: -</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="labelCycle">
+           <property name="text">
+            <string>Cycle: 0</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="bottomButtonsHBox">
+        <item>
+         <widget class="QPushButton" name="btnLoad">
+          <property name="text">
+           <string>📂 Charger</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="btnSave">
+          <property name="text">
+           <string>💾 Sauvegarder</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="btnQuit">
+          <property name="text">
+           <string>❌ Quitter</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
